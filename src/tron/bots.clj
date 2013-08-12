@@ -2,10 +2,15 @@
   (:require [tron.core :as tron]))
 
 ; Implement a strategy similar to Buzz!!
-(defn buzz
+(defn team3
   "To infinity and beyond!"
   [look {[x y] :pos}]
   {:pos [(inc x) y]})
+
+(defn team32
+  "To infinity and beyond!"
+  [look {[x y] :pos}]
+  {:pos [(dec x) y]})
 
 ; Choose a TEAM colour
 (def red 1)
@@ -25,5 +30,11 @@
 ;(tron/blank-arena)
 
 
-(defn -main []
-  (tron/spawn-biker buzz red))
+(defn start []
+  (do
+    (tron/stop!)
+    (tron/blank-arena)
+    (tron/spawn-biker team32 red)
+    (tron/spawn-biker team3 yellow)
+    )
+  )
