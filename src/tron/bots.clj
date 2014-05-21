@@ -25,5 +25,15 @@
 ;(tron/blank-arena)
 
 
+(defn start []
+  (do
+    (tron/stop!)
+    (tron/blank-arena)
+    (tron/spawn-biker buzz red)
+    )
+  )
+
 (defn -main []
-  (tron/spawn-biker buzz red))
+  (start))
+
+

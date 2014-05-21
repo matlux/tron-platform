@@ -1,7 +1,7 @@
 (ns tron.core
   (:require [quil.core :as q]))
 
-(def size "size of the square arena" 100)
+(def size "size of the square arena" 50)
 (def scale 10)
 (def sleep-length "time in ms between turns" 100)
 
