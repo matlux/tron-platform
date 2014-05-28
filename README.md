@@ -20,11 +20,6 @@ Stop the play
 
     (tron/stop!)
 
-
-Reset the amphitheatre
-
-    (tron/blank-arena)
-
 ## License
 
 Distributed under the Eclipse Public License, the same as Clojure.
