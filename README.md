@@ -12,13 +12,14 @@ Implement a function in bots.clj similar to buzz.clj
 
 Start a battle in the repl with
 
-    (require '[tron.core :as tron])
-    (use '[tron.bots])
-    (tron/spawn-biker buzz)
+    (require '[tron.bots :as tron]) ; (Optional)
+    (use '[tron.bots] :reload)
+    (start)
 
 Stop the play
 
     (tron/stop!)
+
 
 Reset the amphitheatre
 
