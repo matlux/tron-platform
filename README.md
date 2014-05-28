@@ -1,4 +1,4 @@
-# London Forward Clojure Dojo - August 2013 - Tron
+# London Clojure Dojo - Tron
 
 A Tron Light Cycle amphitheatre.. the strategy is up to you.  In the future video game battles will be a matter of life or death.
 
@@ -12,7 +12,7 @@ Implement a function in bots.clj similar to buzz.clj
 
 Start a battle in the repl with
 
-    (require '[tron.bots :as tron]) ; (Optional)
+    (require '[tron.bots :as tron]) ; (optional: only needed if you need core fuctions)
     (use '[tron.bots] :reload)
     (start)
 
