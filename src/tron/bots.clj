@@ -6,6 +6,10 @@
   "To infinity and beyond!"
   [look {[x y] :pos}]
   {:pos [(inc x) y]})
+(defn buzz2
+  "To infinity and beyond!"
+  [look {[x y] :pos}]
+  {:pos [(inc x) y]})
 
 ; Choose a TEAM colour
 (def red 1)
@@ -30,6 +34,7 @@
     (tron/stop!)
     (tron/blank-arena)
     (tron/spawn-biker buzz red)
+    (tron/spawn-biker buzz2 yellow)
     )
   )
 
