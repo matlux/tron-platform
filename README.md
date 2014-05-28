@@ -6,19 +6,31 @@ This code was kindly donated by the good folks of http://lambdanext.eu clojure t
 
 Thankyou to Sam Aaron, Christophe Grand, Edmund Jackson, Meikel Brandmeyer
 
+## Install
+
+    git clone https://github.com/matlux/tron-platform.git
+    lein run
+
+You should see a graphic windows opening with two colored lines drawing (they  are  the trons or snakes).
+
 ## Usage
 
-Implement a function in bots.clj similar to buzz.clj
+Implement a function in [bots.clj](https://github.com/matlux/tron-platform/blob/master/src/tron/bots.clj) similar to src/tron/bots.clj
 
-Start a battle in the repl with
+### Start a battle in the repl with
 
-    (require '[tron.core :as tron]) ; (optional: only needed if you need core fuctions)
     (use '[tron.bots] :reload)
     (start)
 
-Stop the play
+### Stop the play
 
     (tron/stop!)
+
+### Optional
+
+Only needed if you need core fuctions)
+
+        (require '[tron.core :as tron])
 
 ## License
 
