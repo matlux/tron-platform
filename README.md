@@ -12,7 +12,7 @@ Implement a function in bots.clj similar to buzz.clj
 
 Start a battle in the repl with
 
-    (require '[tron.bots :as tron]) ; (optional: only needed if you need core fuctions)
+    (require '[tron.core :as tron]) ; (optional: only needed if you need core fuctions)
     (use '[tron.bots] :reload)
     (start)
 
