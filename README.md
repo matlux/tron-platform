@@ -15,7 +15,7 @@ You should see a graphic windows opening with two colored lines drawing (they  a
 
 ## Usage
 
-Implement a function in [bots.clj](https://github.com/matlux/tron-platform/blob/master/src/tron/bots.clj) similar to src/tron/bots.clj
+Implement a function in [bots.clj](https://github.com/matlux/tron-platform/blob/master/src/tron/bots.clj).
 
 ### Start a battle in the repl with
 
@@ -28,7 +28,7 @@ Implement a function in [bots.clj](https://github.com/matlux/tron-platform/blob/
 
 ### Optional
 
-Only needed if you need core fuctions)
+Only needed if you need core fuctions
 
         (require '[tron.core :as tron])
 
