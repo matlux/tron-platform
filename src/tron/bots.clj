@@ -7,30 +7,58 @@
   [look {[x y] :pos}]
   {:pos [(inc x) y]})
 
-(defn new-pos [dir [x y]]
-  (cond
-   (= dir :east) [(inc x) y]
-   (= dir :west) [(dec x) y]
-   (= dir :north) [x (dec y)]
-   (= dir :south) [x (inc y)]
-   :true [x y]))
+(defn new-pos
+  ([dir old-pos] (new-pos dir old-pos 1))
+  ([dir [x y] distance]
+      (cond
+       (= dir :east) [(+ x distance) y]
+       (= dir :west) [(- x distance) y]
+       (= dir :north) [x (- y distance)]
+       (= dir :south) [x (+ y distance)]
+       :true [x y])))
 
 (defn safe-pos? [look position]
   (not (look position)))
 
 (def look-fn (atom nil))
 
+(defn get-dirs []
+  [:east :west :north :south])
+
 (defn turner
   "I'll just turn around"
   [look {[x y] :pos}]
   (reset! look-fn look)
-(let [dirs [:east :west :north :south]
+  (let [dirs (get-dirs)
         move-options (map new-pos dirs (cycle [[x y]]))
         new-pos (first
                  (filter #(safe-pos? look %)
                          move-options))]
     {:pos
      new-pos}))
+;;next recursive walker, looks few steps ahead
+;; makes one decision and then re-evaluates based on outcome of
+;; move from this future step
+(defn farseer
+  [look {old-pos :pos}]
+  (let [dirs (get-dirs)
+        dist [1 5]
+        options (filter second
+                        (for [dir dirs
+                              d dist]
+                          [dir (safe-pos? look
+                                          (new-pos dir old-pos d))]))
+        [best-dir _] (last
+                      (sort-by second
+                               (map (fn [[k v]] [k (count v)])
+                                    (group-by first options))))]
+
+    {:pos (new-pos best-dir old-pos)}))
+
+(defn get-cross-dirs [dir]
+  (if (or (= dir :south) (= dir :north))
+    [:east :west]
+    [:north :south]))
 
 (defn south-walker [look {[x y] :pos}]
   {:pos [x (inc y)]})
@@ -60,6 +88,7 @@
     (tron/spawn-biker buzz red)
     (tron/spawn-biker south-walker green)
     (tron/spawn-biker turner orange)
+    (tron/spawn-biker farseer blue)
     )
   )
 
