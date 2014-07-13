@@ -7,6 +7,34 @@
   [look {[x y] :pos}]
   {:pos [(inc x) y]})
 
+(defn new-pos [dir [x y]]
+  (cond
+   (= dir :east) [(inc x) y]
+   (= dir :west) [(dec x) y]
+   (= dir :north) [x (dec y)]
+   (= dir :south) [x (inc y)]
+   :true [x y]))
+
+(defn safe-pos? [look position]
+  (not (look position)))
+
+(def look-fn (atom nil))
+
+(defn turner
+  "I'll just turn around"
+  [look {[x y] :pos}]
+  (reset! look-fn look)
+(let [dirs [:east :west :north :south]
+        move-options (map new-pos dirs (cycle [[x y]]))
+        new-pos (first
+                 (filter #(safe-pos? look %)
+                         move-options))]
+    {:pos
+     new-pos}))
+
+(defn south-walker [look {[x y] :pos}]
+  {:pos [x (inc y)]})
+
 ; Choose a TEAM colour
 (def red 1)
 (def orange 25)
@@ -30,10 +58,10 @@
     (tron/stop!)
     (tron/blank-arena)
     (tron/spawn-biker buzz red)
+    (tron/spawn-biker south-walker green)
+    (tron/spawn-biker turner orange)
     )
   )
 
 (defn -main []
   (start))
-
-
