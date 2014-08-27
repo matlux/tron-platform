@@ -1,12 +1,14 @@
 (ns tron.bots
   (:require [tron.core :as tron])
-  (:require [tron.bot-mat :as mat]))
+  (:require [tron.bot-mat :as mat])
+  (:require [tron.bot-greg :as greg]))
 
 ; Implement a strategy similar to Buzz!!
 (defn buzz
   "To infinity and beyond!"
   [look {[x y] :pos}]
   {:pos [(inc x) y]})
+
 
 
 ; Choose a TEAM colour
@@ -33,11 +35,12 @@
     (tron/blank-arena)
     (tron/spawn-biker buzz yellow)
     (tron/spawn-biker mat/bot yellow)
-    (tron/spawn-biker mat/bot2 red)    
+    (tron/spawn-biker mat/bot2 red)
+    (tron/spawn-biker greg/south-walker green)
+    (tron/spawn-biker greg/turner orange)
+    (tron/spawn-biker greg/smart-turner blue)
     )
   )
 
 (defn -main []
   (start))
-
-
